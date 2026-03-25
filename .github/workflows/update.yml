@@ -1,0 +1,22 @@
+name: Daily Update
+on:
+  repository_dispatch:
+    types: [daily-update]
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.UPDATE_TOKEN }}
+      
+      - name: Update content
+        run: |
+          echo "Updated at $(date)" > last-update.txt
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add .
+          git commit -m "Daily update $(date +%Y-%m-%d)" || exit 0
+          git push
