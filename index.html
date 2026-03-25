@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龙哥信息日报</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .filters {
+            background: white;
+            padding: 15px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 70px;
+            z-index: 99;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-box:focus {
+            border-color: #667eea;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .date-group {
+            margin-bottom: 30px;
+        }
+        
+        .date-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 12px;
+        }
+        
+        .card-icon.city {
+            background: #e3f2fd;
+        }
+        
+        .card-icon.marathon {
+            background: #f3e5f5;
+        }
+        
+        .card-icon.admin {
+            background: #e8f5e9;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .card-time {
+            font-size: 12px;
+            color: #999;
+            margin-left: auto;
+        }
+        
+        .card-content {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .card-content h3 {
+            font-size: 15px;
+            color: #333;
+            margin: 12px 0 8px 0;
+        }
+        
+        .card-content ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .card-content li {
+            margin-bottom: 5px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-top: 10px;
+        }
+        
+        .tag.important {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .tag.recommended {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+        
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .filters {
+                top: 60px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 龙哥信息日报</h1>
+        <p>城市更新 · 马拉松赛事 · 行政工作</p>
+    </div>
+    
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="city">城市更新</button>
+        <button class="filter-btn" data-filter="marathon">马拉松</button>
+        <button class="filter-btn" data-filter="admin">行政工作</button>
+        <input type="text" class="search-box" placeholder="搜索关键词..." id="searchInput">
+    </div>
+    
+    <div class="container" id="content">
+        <!-- 内容将通过 JavaScript 动态加载 -->
+    </div>
+
+    <script>
+        // 模拟数据 - 实际使用时从服务器获取
+        const data = [
+            {
+                date: '2026-03-25',
+                items: [
+                    {
+                        type: 'city',
+                        icon: '🏙️',
+                        title: '广州城市更新日报',
+                        time: '09:00',
+                        content: '<h3>重点项目进展</h3><ul><li>琶洲西区更新项目进展顺利，预计Q2完成拆迁</li><li>白鹅潭商务区启动新一轮规划调整</li></ul><h3>政策动态</h3><ul><li>市住建局发布《2026年城市更新工作要点》</li></ul>',
+                        tags: ['高优先级']
+                    },
+                    {
+                        type: 'marathon',
+                        icon: '🏃',
+                        title: '全国马拉松赛事日报',
+                        time: '09:00',
+                        content: '<h3>正在报名</h3><ul><li>【重要】2026北京马拉松：报名截止3月30日，比赛日10月19日</li><li>广州马拉松：报名开启，限额30000人</li></ul><h3>即将开启</h3><ul><li>上海马拉松：预计4月1日开启报名</li></ul>',
+                        tags: ['重要']
+                    },
+                    {
+                        type: 'admin',
+                        icon: '📋',
+                        title: '行政工作日报',
+                        time: '09:00',
+                        content: '<h3>【推荐】管理工具</h3><ul><li>飞书多维表格：行政数据管理新方案，支持自动化报表</li></ul><h3>勤俭办企案例</h3><ul><li>某科技公司通过集中采购年省成本200万</li></ul>',
+                        tags: ['推荐']
+                    }
+                ]
+            }
+        ];
+
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        function renderContent() {
+            const container = document.getElementById('content');
+            let html = '';
+            let hasContent = false;
+
+            data.forEach(day => {
+                const filteredItems = day.items.filter(item => {
+                    const matchFilter = currentFilter === 'all' || item.type === currentFilter;
+                    const matchSearch = !searchTerm || 
+                        item.title.includes(searchTerm) || 
+                        item.content.includes(searchTerm);
+                    return matchFilter && matchSearch;
+                });
+
+                if (filteredItems.length > 0) {
+                    hasContent = true;
+                    html += `<div class="date-group">
+                        <div class="date-header">${day.date}</div>`;
+                    
+                    filteredItems.forEach(item => {
+                        const tagsHtml = item.tags.map(tag => {
+                            const className = tag.includes('重要') ? 'important' : 
+                                            tag.includes('推荐') ? 'recommended' : '';
+                            return `<span class="tag ${className}">${tag}</span>`;
+                        }).join('');
+
+                        html += `
+                            <div class="card" data-type="${item.type}">
+                                <div class="card-header">
+                                    <div class="card-icon ${item.type}">${item.icon}</div>
+                                    <div class="card-title">${item.title}</div>
+                                    <div class="card-time">${item.time}</div>
+                                </div>
+                                <div class="card-content">${item.content}</div>
+                                ${tagsHtml}
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div>';
+                }
+            });
+
+            if (!hasContent) {
+                html = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <p>暂无相关内容</p>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // 筛选按钮事件
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderContent();
+            });
+        });
+
+        // 搜索框事件
+        document.getElementById('searchInput').addEventListener('input', function() {
+            searchTerm = this.value;
+            renderContent();
+        });
+
+        // 初始渲染
+        renderContent();
+    </script>
+</body>
+</html>
