@@ -13,7 +13,7 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: #f5f5f5;
+            background: #f0f2f5;
             color: #333;
             line-height: 1.6;
         }
@@ -26,7 +26,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
         
         .header h1 {
@@ -35,31 +35,32 @@
         }
         
         .header p {
-            font-size: 14px;
-            opacity: 0.9;
+            font-size: 13px;
+            opacity: 0.85;
         }
         
         .filters {
             background: white;
-            padding: 15px 20px;
+            padding: 12px 16px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
             justify-content: center;
             border-bottom: 1px solid #eee;
             position: sticky;
-            top: 70px;
+            top: 68px;
             z-index: 99;
         }
         
         .filter-btn {
-            padding: 8px 16px;
-            border: 1px solid #ddd;
+            padding: 7px 16px;
+            border: 1.5px solid #ddd;
             background: white;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
+            font-size: 13px;
+            transition: all 0.25s;
+            font-weight: 500;
         }
         
         .filter-btn:hover, .filter-btn.active {
@@ -70,11 +71,11 @@
         
         .search-box {
             width: 100%;
-            max-width: 400px;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
+            max-width: 360px;
+            padding: 8px 15px;
+            border: 1.5px solid #ddd;
             border-radius: 25px;
-            font-size: 14px;
+            font-size: 13px;
             outline: none;
         }
         
@@ -85,40 +86,35 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 16px;
         }
         
         .date-group {
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
         
         .date-header {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             color: #667eea;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #667eea;
         }
         
+        /* 大板块卡片 */
         .card {
             background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            border-radius: 14px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            overflow: hidden;
         }
         
         .card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
+            padding: 16px 18px 12px;
         }
         
         .card-icon {
@@ -130,74 +126,190 @@
             justify-content: center;
             font-size: 20px;
             margin-right: 12px;
+            flex-shrink: 0;
         }
         
-        .card-icon.city {
-            background: #e3f2fd;
-        }
-        
-        .card-icon.marathon {
-            background: #f3e5f5;
-        }
-        
-        .card-icon.admin {
-            background: #e8f5e9;
-        }
-        
-        .card-icon.party {
-            background: #ffebee;
-        }
+        .card-icon.city { background: #e3f2fd; }
+        .card-icon.marathon { background: #f3e5f5; }
+        .card-icon.admin { background: #e8f5e9; }
+        .card-icon.party { background: #ffebee; }
         
         .card-title {
             font-size: 16px;
             font-weight: bold;
             color: #333;
+            flex: 1;
         }
         
         .card-time {
             font-size: 12px;
-            color: #999;
-            margin-left: auto;
+            color: #aaa;
+            margin-left: 8px;
         }
         
-        .card-content {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.8;
-        }
-        
-        .card-content h3 {
-            font-size: 15px;
-            color: #333;
-            margin: 12px 0 8px 0;
-        }
-        
-        .card-content ul {
-            margin-left: 20px;
-            margin-bottom: 10px;
-        }
-        
-        .card-content li {
-            margin-bottom: 5px;
+        .card-tags {
+            padding: 0 18px 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
         
         .tag {
             display: inline-block;
             padding: 3px 10px;
             border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .tag.important { background: #ffebee; color: #c62828; }
+        .tag.recommended { background: #e8f5e9; color: #2e7d32; }
+        .tag.normal { background: #f3f4f6; color: #666; }
+        
+        /* 子条目列表 */
+        .items-list {
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        /* 单个子条目 */
+        .sub-item {
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .sub-item:last-child {
+            border-bottom: none;
+        }
+        
+        .sub-item-header {
+            display: flex;
+            align-items: center;
+            padding: 13px 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+            user-select: none;
+        }
+        
+        .sub-item-header:hover {
+            background: #fafafa;
+        }
+        
+        .sub-item-header.active {
+            background: #f7f8ff;
+        }
+        
+        .sub-item-label {
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .sub-item-badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+        
+        .badge-hot { background: #fff0f0; color: #e53935; }
+        .badge-new { background: #e8f5e9; color: #43a047; }
+        .badge-key { background: #fff8e1; color: #f57c00; }
+        .badge-link { background: #e8eaf6; color: #3949ab; }
+        
+        .sub-item-arrow {
+            margin-left: 10px;
+            color: #bbb;
             font-size: 12px;
-            margin-right: 8px;
-            margin-top: 10px;
+            transition: transform 0.25s;
+            flex-shrink: 0;
         }
         
-        .tag.important {
-            background: #ffebee;
-            color: #c62828;
+        .sub-item-header.active .sub-item-arrow {
+            transform: rotate(180deg);
+            color: #667eea;
         }
         
-        .tag.recommended {
-            background: #e8f5e9;
-            color: #2e7d32;
+        /* 展开内容 */
+        .sub-item-body {
+            display: none;
+            padding: 0 18px 16px 18px;
+            background: #f9faff;
+            border-top: 1px solid #eef0ff;
+            animation: slideDown 0.2s ease;
+        }
+        
+        .sub-item-body.open {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .sub-item-body-inner {
+            padding-top: 14px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.85;
+        }
+        
+        .sub-item-body-inner p {
+            margin-bottom: 8px;
+        }
+        
+        .sub-item-body-inner ul {
+            margin: 6px 0 10px 18px;
+        }
+        
+        .sub-item-body-inner li {
+            margin-bottom: 6px;
+        }
+        
+        .sub-item-body-inner strong {
+            color: #333;
+        }
+        
+        .sub-item-body-inner .highlight {
+            background: #fff9e6;
+            border-left: 3px solid #f5a623;
+            padding: 8px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 13px;
+        }
+        
+        /* 原文链接按钮 */
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 12px;
+            padding: 7px 14px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .source-link:hover {
+            background: #5a6fd6;
+        }
+        
+        .source-link-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 1.5px solid #667eea;
+            margin-left: 8px;
+        }
+        
+        .source-link-secondary:hover {
+            background: #f0f2ff;
         }
         
         .empty-state {
@@ -212,21 +324,12 @@
         }
         
         @media (max-width: 600px) {
-            .header h1 {
-                font-size: 20px;
-            }
-            
-            .filters {
-                top: 60px;
-            }
-            
-            .container {
-                padding: 15px;
-            }
-            
-            .card {
-                padding: 15px;
-            }
+            .header h1 { font-size: 20px; }
+            .filters { top: 60px; }
+            .container { padding: 14px 12px; }
+            .card-header { padding: 14px 14px 10px; }
+            .sub-item-header { padding: 12px 14px; }
+            .sub-item-body { padding: 0 14px 14px; }
         }
     </style>
 </head>
@@ -245,128 +348,475 @@
         <input type="text" class="search-box" placeholder="搜索关键词..." id="searchInput">
     </div>
     
-    <div class="container" id="content">
-        <!-- 内容将通过 JavaScript 动态加载 -->
-    </div>
+    <div class="container" id="content"></div>
 
     <script>
-        // 数据存储
-        const data = [
-            {
-                date: '2026-03-25',
-                items: [
-                    {
-                        type: 'city',
-                        icon: '🏙️',
-                        title: '广州城市更新日报',
-                        time: '09:00',
-                        content: '<h3>📌 重点项目进展</h3><ul><li><strong>琶洲西区更新项目</strong>：拆迁进度85%，预计Q2完成全部拆迁工作</li><li><strong>白鹅潭商务区</strong>：启动新一轮规划调整，重点优化交通配套</li><li><strong>金融城起步区</strong>：首批企业已入驻，招商进度超预期</li></ul><h3>📋 政策动态</h3><ul><li>市住建局发布《2026年城市更新工作要点》，明确年度目标</li><li>旧改补偿标准调整，居民安置方案优化</li></ul>',
-                        tags: ['高优先级']
-                    },
-                    {
-                        type: 'marathon',
-                        icon: '🏃',
-                        title: '全国马拉松赛事日报',
-                        time: '09:00',
-                        content: '<h3>🔥 正在报名</h3><ul><li><strong>【重要】2026北京马拉松</strong>：报名截止3月30日，比赛日10月19日，限额30000人</li><li><strong>广州马拉松</strong>：报名已开启，限额30000人，抽签制</li><li><strong>无锡马拉松</strong>：报名中，4月10日截止，精英赛事</li></ul><h3>⏰ 即将开启</h3><ul><li><strong>上海马拉松</strong>：预计4月1日开启报名，金标赛事</li><li><strong>深圳马拉松</strong>：预计4月中旬开启报名</li></ul>',
-                        tags: ['重要']
-                    },
-                    {
-                        type: 'admin',
-                        icon: '📋',
-                        title: '行政工作日报',
-                        time: '09:00',
-                        content: '<h3>⭐ 【推荐】管理工具</h3><ul><li><strong>飞书多维表格</strong>：行政数据管理新方案，支持自动化报表生成，已有多家企业采用</li><li><strong>钉钉智能审批</strong>：流程优化案例分享，审批效率提升60%</li></ul><h3>💡 勤俭办企案例</h3><ul><li>某科技公司通过集中采购年省成本200万，供应商管理优化方案</li><li>办公用品数字化管理，库存成本降低35%</li></ul>',
-                        tags: ['推荐']
-                    },
-                    {
-                        type: 'party',
-                        icon: '🔴',
-                        title: '党建学习日报',
-                        time: '09:00',
-                        content: '<h3>📖 【重点】理论学习：树立和践行正确政绩观学习教育</h3><ul><li>中办印发《关于在全党开展树立和践行正确政绩观学习教育的通知》，以<strong>县处级以上领导干部</strong>为重点对象</li><li>要求一体推进"学查改"，引导广大党员干部<strong>往心里学、向实处干</strong></li><li>求是网3月24日发布《为何要开展树立和践行正确政绩观学习教育》理论文章（重点推荐）</li></ul><h3>📋 【重点】政策动态：学习贯彻2026年全国两会精神</h3><ul><li>2026年是"十五五"开局之年，核心议题：高质量发展、新质生产力、民生保障</li><li>国务院3月16日全体会议对落实两会精神和重点工作作出部署</li></ul><h3>⚖️ 【重点】廉政建设：贯彻落实二十届中央纪委五次全会精神</h3><ul><li>坚定不移推进党的自我革命，持续保持反腐败高压态势</li><li>各基层党组织要把党风廉政建设要求落实到具体工作中</li></ul><h3>🏘️ 实践活动："我为群众办实事"持续推进</h3><ul><li>各地基层党组织在医疗、老旧小区改造、就业帮扶等领域形成典型做法</li><li>党员要把群众满意作为检验工作的第一标准</li></ul><h3>📚 今日学习推荐</h3><ul><li>《为何要开展树立和践行正确政绩观学习教育》—— 求是网（3月24日）</li><li>二十届中央纪委五次全会公报全文 —— 中央纪委监察委网站</li></ul>',
-                        tags: ['重要', '学习']
-                    }
-                ]
-            }
-        ];
+    // ============================================================
+    // 数据结构：每个板块 → items 数组（子条目）
+    // 每个子条目：label(标题), badge(标签), detail(详细内容HTML), url(原文链接，可选)
+    // ============================================================
+    const data = [
+        {
+            date: '2026-03-26',
+            cards: [
+                {
+                    type: 'admin',
+                    icon: '📋',
+                    title: '行政工作日报',
+                    time: '09:00',
+                    tags: ['推荐'],
+                    items: [
+                        {
+                            label: '【推荐】BI+AI赋能行政岗位 — 自动化流程大幅提升办公效率',
+                            badge: { text: '推荐', cls: 'badge-new' },
+                            detail: `<p>FineBI结合AI能力为行政岗位赋能，成为当前流程自动化升级的热点方案：</p>
+                                <ul>
+                                    <li>行政数据自动汇总：报表从每周手工3小时缩短至系统自动15分钟</li>
+                                    <li>AI异常检测：自动识别费用超标、物资异常等情况，减少人工核查</li>
+                                    <li>可视化看板：资产、采购、能耗数据一键生成管理驾驶舱</li>
+                                    <li>适用场景：固定资产管理、采购跟踪、办公费用分析</li>
+                                </ul>
+                                <div class="highlight">💡 参考价值：对有数字化转型需求的行政部门，BI工具是低门槛、高回报的优先选项</div>`,
+                            url: 'https://www.finebi.com/blog/article/68cc039528946ecca8f7da0f'
+                        },
+                        {
+                            label: '【推荐】简道云2026计划优化工具 — 行政事务数字化管理新选择',
+                            badge: { text: '推荐', cls: 'badge-new' },
+                            detail: `<p>2026年企业数字化管理工具市场持续升温，简道云在中小企业行政场景中获好评：</p>
+                                <ul>
+                                    <li>零代码搭建行政审批、物资申领、访客管理等应用</li>
+                                    <li>与钉钉、企微无缝集成，数据流转无断点</li>
+                                    <li>典型案例：某制造企业用简道云搭建"行政服务中心"，覆盖20+行政场景</li>
+                                    <li>年费约5万元，替代原有多套软件，综合节省超15万</li>
+                                </ul>
+                                <div class="highlight">💡 适用场景：中小企业行政信息化起步阶段，快速建立数字化管理基础</div>`,
+                            url: 'https://www.jiandaoyun.com/news/article/69c09ff334594e4ba6c8b018'
+                        },
+                        {
+                            label: '国有企业综合行政管理：建立常态化合规审查机制',
+                            badge: { text: '制度', cls: 'badge-key' },
+                            detail: `<p>企业家日报报道：国有企业综合行政管理规范化实践要点：</p>
+                                <ul>
+                                    <li><strong>合规红线管理</strong>：对重大决策、合同签订、项目申报等环节开展事前审查与过程监督</li>
+                                    <li><strong>SOP标准化</strong>：建立标准操作流程，明确节点责任与时限要求，保障事务处理高效统一</li>
+                                    <li><strong>制度覆盖</strong>：形成覆盖决策、执行、监督全过程的制度体系</li>
+                                    <li><strong>信息上传下达</strong>：通过联席会议、项目组等形式破除部门壁垒，推进业务合作</li>
+                                </ul>
+                                <div class="highlight">📋 SOP要点：收发文→会议全流程→采购申报→档案管理，各环节均应有书面标准规程</div>`
+                        },
+                        {
+                            label: '【推荐】中建装饰"勤俭办企"三年实践 — 运营成本压降+管理提升',
+                            badge: { text: '推荐', cls: 'badge-new' },
+                            detail: `<p>中国建筑装饰集团持续推进"厉行节约 勤俭办企"专项行动，三年成效显著：</p>
+                                <ul>
+                                    <li>压降非必要、非有效性费用支出，引导员工践行简约适度的工作方式</li>
+                                    <li>办公用房按需分配，空余办公区转为共享工位，面积利用率提升30%</li>
+                                    <li>差旅管理精细化：推广视频会议替代出差，年节省差旅费约25%</li>
+                                    <li>固定资产统筹调配：集团内部设备余缺调配机制，减少重复采购</li>
+                                </ul>
+                                <div class="highlight">💡 核心做法：勤俭办企不是简单"砍预算"，而是通过精细管理让每一分钱都花在刀刃上</div>`,
+                            url: 'https://deco.cscec.com/xwzx/gsxx/202601/3926526.html'
+                        },
+                        {
+                            label: '【推荐】无纸化会议管理 — 会议总量降22%，节省近百万',
+                            badge: { text: '推荐', cls: 'badge-new' },
+                            detail: `<p>某集团2025年度办公室工作总结中，无纸化会议改革成为亮点案例：</p>
+                                <ul>
+                                    <li><strong>会前</strong>：参会人≥20人须填写"会议价值自评表"，说明议题价值和预期产出</li>
+                                    <li><strong>会中</strong>：会议室安装人脸识别门禁+语音转文字技术，自动生成会议纪要</li>
+                                    <li><strong>会后</strong>：行动项通过任务管理系统直接分配责任人，自动设置提醒</li>
+                                    <li><strong>文化</strong>：推行"无会周"试点，替代方案为异步语音+在线文档协作</li>
+                                </ul>
+                                <div class="highlight">📊 量化成果：全年会议从2186场降至1777场，直接节约会务支出98.4万元；员工满意度"会议效率"项得分4.7/5</div>`
+                        },
+                        {
+                            label: '档案数字化与信息安全 — "安全沙箱"保护核心数据',
+                            badge: { text: '案例', cls: 'badge-key' },
+                            detail: `<p>国有企业办公室管理质效提升的"三化"路径中，信息安全体系建设是重要一环：</p>
+                                <ul>
+                                    <li><strong>档案数字化</strong>：建立电子档案管理系统，实现档案资料数字化存储与智能检索</li>
+                                    <li><strong>安全沙箱</strong>：核心文档采用物理隔离+访问权限分级管理，防止数据泄露</li>
+                                    <li><strong>外包资质管理</strong>：档案扫描外包团队须具备国家秘密载体印制甲级资质</li>
+                                    <li><strong>定期演练</strong>：每季度开展信息安全培训和应急演练，确保系统稳定运行</li>
+                                </ul>
+                                <div class="highlight">💡 实施建议：优先解决关键环节痛点，遵循"实用为先、循序渐进"原则，避免盲目追求技术先进性</div>`
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            date: '2026-03-25',
+            cards: [
+                {
+                    type: 'city',
+                    icon: '🏙️',
+                    title: '广州城市更新日报',
+                    time: '09:00',
+                    tags: ['高优先级'],
+                    items: [
+                        {
+                            label: '琶洲西区更新项目：拆迁进度85%，预计Q2完成',
+                            badge: { text: '进展', cls: 'badge-key' },
+                            detail: `<p><strong>项目概况：</strong>琶洲西区城市更新项目拆迁工作稳步推进，当前进度已达85%。</p>
+                                <ul>
+                                    <li>拆迁进度：85%，剩余部分正在攻坚</li>
+                                    <li>预计Q2（6月前）完成全部拆迁工作</li>
+                                    <li>后续将启动地块开发建设招商程序</li>
+                                </ul>
+                                <div class="highlight">💡 关键节点：Q2拆迁收尾 → Q3启动建设招标 → 预计2028年竣工</div>`
+                        },
+                        {
+                            label: '白鹅潭商务区：启动新一轮规划调整，重点优化交通配套',
+                            badge: { text: '规划', cls: 'badge-new' },
+                            detail: `<p>白鹅潭商务区本轮规划调整核心方向：</p>
+                                <ul>
+                                    <li>优化轨道交通与地块的衔接方案（重点解决地铁11号线换乘痛点）</li>
+                                    <li>新增公交枢纽站点2处，提升最后一公里通达性</li>
+                                    <li>地下空间互联互通方案纳入本轮规划</li>
+                                </ul>`
+                        },
+                        {
+                            label: '金融城起步区：首批企业入驻，招商进度超预期',
+                            badge: { text: '热点', cls: 'badge-hot' },
+                            detail: `<p>广州金融城起步区招商工作取得阶段性成果：</p>
+                                <ul>
+                                    <li>首批入驻企业以金融科技、私募基金类为主</li>
+                                    <li>招商进度超原定目标约15个百分点</li>
+                                    <li>已引进头部企业3家，正在洽谈意向企业8家</li>
+                                </ul>`
+                        },
+                        {
+                            label: '市住建局发布《2026年城市更新工作要点》',
+                            badge: { text: '政策', cls: 'badge-key' },
+                            detail: `<p>广州市住房和城乡建设局发布2026年城市更新年度工作要点，核心内容：</p>
+                                <ul>
+                                    <li>全年计划完成改造老旧小区不少于200个</li>
+                                    <li>完成旧村改造签约面积不少于500万㎡</li>
+                                    <li>旧改补偿标准与市场价格挂钩机制进一步优化</li>
+                                    <li>居民安置方案将引入"原地回迁+异地选房"双轨制</li>
+                                </ul>`
+                        }
+                    ]
+                },
+                {
+                    type: 'marathon',
+                    icon: '🏃',
+                    title: '全国马拉松赛事日报',
+                    time: '09:00',
+                    tags: ['重要'],
+                    items: [
+                        {
+                            label: '【重要】2026北京马拉松 — 报名截止3月30日',
+                            badge: { text: '紧急', cls: 'badge-hot' },
+                            detail: `<p><strong>⚠️ 距截止仅剩5天！</strong></p>
+                                <ul>
+                                    <li>比赛日期：2026年10月19日（周日）</li>
+                                    <li>报名截止：<strong>2026年3月30日</strong></li>
+                                    <li>限额：30,000人（抽签制）</li>
+                                    <li>报名费：全程290元，半程190元</li>
+                                    <li>赛道：天安门广场出发，途经长安街、颐和园</li>
+                                </ul>`,
+                            url: 'https://www.beijing-marathon.com'
+                        },
+                        {
+                            label: '广州马拉松 — 报名已开启，限额30000人',
+                            badge: { text: '报名中', cls: 'badge-new' },
+                            detail: `<ul>
+                                <li>比赛日期：2026年12月6日</li>
+                                <li>报名方式：抽签制，需在截止前完成报名</li>
+                                <li>限额：30,000人</li>
+                                <li>赛道：广州塔出发，途经珠江新城、海心沙</li>
+                            </ul>`,
+                            url: 'https://www.gzmarathon.com'
+                        },
+                        {
+                            label: '无锡马拉松 — 报名中，4月10日截止，精英赛事',
+                            badge: { text: '报名中', cls: 'badge-new' },
+                            detail: `<ul>
+                                <li>比赛日期：2026年4月26日</li>
+                                <li>报名截止：2026年4月10日</li>
+                                <li>赛事等级：中国田协金牌赛事</li>
+                                <li>特色：以成绩为导向，精英选手优先保障</li>
+                            </ul>`
+                        },
+                        {
+                            label: '上海马拉松 — 预计4月1日开启报名（金标赛事）',
+                            badge: { text: '即将', cls: 'badge-key' },
+                            detail: `<ul>
+                                <li>比赛日期：预计2026年11月</li>
+                                <li>报名开启：预计4月1日</li>
+                                <li>赛事等级：世界田联金标赛事</li>
+                                <li>建议提前关注官方公众号"上海马拉松"</li>
+                            </ul>`
+                        },
+                        {
+                            label: '深圳马拉松 — 预计4月中旬开启报名',
+                            badge: { text: '即将', cls: 'badge-key' },
+                            detail: `<ul>
+                                <li>比赛日期：预计2026年12月</li>
+                                <li>报名开启：预计4月中旬</li>
+                                <li>赛道：深圳湾公园沿线，滨海风景优美</li>
+                            </ul>`
+                        }
+                    ]
+                },
+                {
+                    type: 'admin',
+                    icon: '📋',
+                    title: '行政工作日报',
+                    time: '09:00',
+                    tags: ['推荐'],
+                    items: [
+                        {
+                            label: '【推荐】飞书多维表格 — 行政数据管理新方案',
+                            badge: { text: '推荐', cls: 'badge-new' },
+                            detail: `<p>飞书多维表格近期大幅升级，行政管理场景适用性显著提升：</p>
+                                <ul>
+                                    <li>支持自动化报表生成，减少人工汇总工作量约60%</li>
+                                    <li>可与审批、日历、消息等打通，实现全流程数字化</li>
+                                    <li>已有多家500强企业将其用于供应商管理、合同台账等场景</li>
+                                </ul>
+                                <div class="highlight">💡 适用场景：会议记录、固定资产台账、采购申请跟踪</div>`,
+                            url: 'https://www.feishu.cn/product/base'
+                        },
+                        {
+                            label: '钉钉智能审批 — 流程优化案例，效率提升60%',
+                            badge: { text: '案例', cls: 'badge-key' },
+                            detail: `<p>某制造业企业引入钉钉智能审批后的改善数据：</p>
+                                <ul>
+                                    <li>平均审批周期：从3.2天缩短至1.3天（↓59%）</li>
+                                    <li>审批节点卡顿情况减少75%（通过移动端推送解决）</li>
+                                    <li>纸质单据用量减少90%，年节省打印成本约8万元</li>
+                                </ul>`
+                        },
+                        {
+                            label: '勤俭办企案例 — 集中采购年省成本200万',
+                            badge: { text: '案例', cls: 'badge-key' },
+                            detail: `<p>某科技公司推行集中采购改革后的成效：</p>
+                                <ul>
+                                    <li>整合全公司采购需求，与10家供应商签订年度框架协议</li>
+                                    <li>通过批量议价，综合采购成本降低约22%</li>
+                                    <li>全年采购成本从约910万降至710万，节省约200万</li>
+                                    <li>供应商管理效率提升：KPI考核机制促进服务质量稳步提高</li>
+                                </ul>`
+                        },
+                        {
+                            label: '办公用品数字化管理 — 库存成本降低35%',
+                            badge: { text: '案例', cls: 'badge-key' },
+                            detail: `<ul>
+                                <li>引入库存管理系统后，实时掌握库存动态，避免过度采购</li>
+                                <li>通过安全库存预警机制，减少应急采购（成本通常高出30%）</li>
+                                <li>库存成本从年均50万降至约32.5万，节省约35%</li>
+                            </ul>`
+                        }
+                    ]
+                },
+                {
+                    type: 'party',
+                    icon: '🔴',
+                    title: '党建学习日报',
+                    time: '09:00',
+                    tags: ['重要', '学习'],
+                    items: [
+                        {
+                            label: '【重点】全党开展"树立和践行正确政绩观"学习教育',
+                            badge: { text: '重点', cls: 'badge-hot' },
+                            detail: `<p>中共中央办公厅近日印发《关于在全党开展树立和践行正确政绩观学习教育的通知》。</p>
+                                <div class="highlight">📌 核心要求：把为民造福作为最大政绩，坚决反对形式主义、官僚主义</div>
+                                <ul>
+                                    <li>重点对象：<strong>县处级以上领导班子和领导干部</strong></li>
+                                    <li>工作方法：一体推进"<strong>学查改</strong>"三个环节</li>
+                                    <li>导向要求：引导广大党员干部<strong>往心里学、向实处干</strong></li>
+                                    <li>各地正迅速动员、精心组织，明确责任、细化安排</li>
+                                </ul>`,
+                            url: 'https://www.qstheory.cn'
+                        },
+                        {
+                            label: '求是网理论文章：《为何要开展树立和践行正确政绩观学习教育》',
+                            badge: { text: '推荐', cls: 'badge-new' },
+                            detail: `<p>求是网3月24日发布重要理论文章，系统阐释开展本次学习教育的背景与意义。</p>
+                                <div class="highlight">🔑 学习要点：正确政绩观的核心是"为谁创造业绩、创造什么样的业绩、怎样创造业绩"，根本落脚点是人民群众的获得感、幸福感、安全感。</div>
+                                <ul>
+                                    <li>文章从理论逻辑、历史逻辑、实践逻辑三个维度展开分析</li>
+                                    <li>强调把"功成不必在我"与"功成必定有我"统一起来</li>
+                                </ul>`,
+                            url: 'https://www.qstheory.cn'
+                        },
+                        {
+                            label: '【重点】学习贯彻2026年全国两会精神持续深化',
+                            badge: { text: '重点', cls: 'badge-hot' },
+                            detail: `<p>2026年全国两会（3月4日-12日）闭幕后，各级党委正深入贯彻落实。</p>
+                                <ul>
+                                    <li>2026年是"<strong>十五五</strong>"开局之年，具有重要标志性意义</li>
+                                    <li>核心议题：高质量发展、新质生产力培育、民生保障</li>
+                                    <li>国务院总理3月16日主持全体会议，对落实两会精神作出部署</li>
+                                    <li>各级党委需细化本单位目标任务，把两会精神转化为实际举措</li>
+                                </ul>
+                                <div class="highlight">💡 学习建议：对照政府工作报告，逐条梳理与本单位工作相关的重点任务</div>`
+                        },
+                        {
+                            label: '【重点】贯彻落实二十届中央纪委五次全会精神',
+                            badge: { text: '重点', cls: 'badge-hot' },
+                            detail: `<p>2026年1月12-14日，中共中央纪委第五次全体会议在北京召开。目前全国各地正密集召开2026年全面从严治党暨党风廉政建设工作会议。</p>
+                                <ul>
+                                    <li>坚定不移推进党的自我革命，持续保持反腐败高压态势</li>
+                                    <li>深化以案为鉴、以案促改，推动案件查处向系统治理延伸</li>
+                                    <li>领导干部要做到廉洁用权、公正处事、谨慎交友</li>
+                                    <li>各基层党组织要把党风廉政建设要求落实到具体工作中</li>
+                                </ul>`,
+                            url: 'https://www.ccdi.gov.cn'
+                        },
+                        {
+                            label: '实践活动："我为群众办实事"典型做法汇总',
+                            badge: { text: '实践', cls: 'badge-key' },
+                            detail: `<p>各地基层党组织持续深化"我为群众办实事"实践活动，近期涌现多项典型做法：</p>
+                                <ul>
+                                    <li>医疗服务：多地党员医生志愿者定期下沉社区开展义诊</li>
+                                    <li>老旧小区：党员"包楼"制度，每名党员负责联系一栋楼的居民诉求</li>
+                                    <li>就业帮扶：党支部与人力资源机构结对，为困难群众提供就业信息</li>
+                                    <li>法律援助：党员律师义务为社区居民提供法律咨询</li>
+                                </ul>
+                                <div class="highlight">💡 学习要点：党员要把群众满意作为检验工作的第一标准，避免"走形式、走过场"</div>`
+                        },
+                        {
+                            label: '今日学习推荐：二十届中央纪委五次全会公报全文',
+                            badge: { text: '资料', cls: 'badge-link' },
+                            detail: `<p>建议今日重点学习二十届中央纪委五次全会公报全文，掌握全面从严治党新部署新要求。</p>
+                                <p>全会公报主要内容：</p>
+                                <ul>
+                                    <li>党中央对2025年党风廉政建设和反腐败工作的总结</li>
+                                    <li>2026年全面从严治党重点任务部署</li>
+                                    <li>对"不敢腐、不能腐、不想腐"一体推进的新要求</li>
+                                </ul>`,
+                            url: 'https://www.ccdi.gov.cn'
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
 
-        let currentFilter = 'all';
-        let searchTerm = '';
+    let currentFilter = 'all';
+    let searchTerm = '';
+    let openItems = new Set(); // 记录展开状态
 
-        function renderContent() {
-            const container = document.getElementById('content');
-            let html = '';
-            let hasContent = false;
+    function getBadgeHtml(badge) {
+        if (!badge) return '';
+        return `<span class="sub-item-badge ${badge.cls}">${badge.text}</span>`;
+    }
 
-            data.forEach(day => {
-                const filteredItems = day.items.filter(item => {
-                    const matchFilter = currentFilter === 'all' || item.type === currentFilter;
-                    const matchSearch = !searchTerm || 
-                        item.title.includes(searchTerm) || 
-                        item.content.includes(searchTerm);
-                    return matchFilter && matchSearch;
-                });
+    function getTagClass(tag) {
+        if (tag.includes('重要') || tag.includes('高优先')) return 'important';
+        if (tag.includes('推荐')) return 'recommended';
+        return 'normal';
+    }
 
-                if (filteredItems.length > 0) {
-                    hasContent = true;
-                    html += `<div class="date-group">
-                        <div class="date-header">${day.date}</div>`;
-                    
-                    filteredItems.forEach(item => {
-                        const tagsHtml = item.tags.map(tag => {
-                            const className = tag.includes('重要') ? 'important' : 
-                                            tag.includes('推荐') ? 'recommended' : '';
-                            return `<span class="tag ${className}">${tag}</span>`;
-                        }).join('');
+    function renderContent() {
+        const container = document.getElementById('content');
+        let html = '';
+        let hasContent = false;
 
-                        html += `
-                            <div class="card" data-type="${item.type}">
-                                <div class="card-header">
-                                    <div class="card-icon ${item.type}">${item.icon}</div>
-                                    <div class="card-title">${item.title}</div>
-                                    <div class="card-time">${item.time}</div>
+        data.forEach(day => {
+            const filteredCards = day.cards.filter(card => {
+                const matchFilter = currentFilter === 'all' || card.type === currentFilter;
+                if (!matchFilter) return false;
+                if (!searchTerm) return true;
+                // 搜索：匹配标题或子条目label
+                return card.title.includes(searchTerm) ||
+                    card.items.some(it => it.label.includes(searchTerm) || (it.detail && it.detail.includes(searchTerm)));
+            });
+
+            if (filteredCards.length > 0) {
+                hasContent = true;
+                html += `<div class="date-group"><div class="date-header">📅 ${day.date}</div>`;
+
+                filteredCards.forEach(card => {
+                    const tagsHtml = card.tags.map(tag =>
+                        `<span class="tag ${getTagClass(tag)}">${tag}</span>`
+                    ).join('');
+
+                    const itemsHtml = card.items.map((item, idx) => {
+                        const itemKey = `${card.type}-${day.date}-${idx}`;
+                        const isOpen = openItems.has(itemKey);
+                        return `
+                            <div class="sub-item">
+                                <div class="sub-item-header ${isOpen ? 'active' : ''}" 
+                                     data-key="${itemKey}" onclick="toggleItem(this, '${itemKey}')">
+                                    <span class="sub-item-label">${item.label}</span>
+                                    ${getBadgeHtml(item.badge)}
+                                    <span class="sub-item-arrow">▼</span>
                                 </div>
-                                <div class="card-content">${item.content}</div>
-                                ${tagsHtml}
+                                <div class="sub-item-body ${isOpen ? 'open' : ''}">
+                                    <div class="sub-item-body-inner">
+                                        ${item.detail}
+                                        ${item.url ? `<a href="${item.url}" class="source-link" target="_blank">🔗 查看原文</a>` : ''}
+                                    </div>
+                                </div>
                             </div>
                         `;
-                    });
-                    
-                    html += '</div>';
-                }
-            });
+                    }).join('');
 
-            if (!hasContent) {
-                html = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📭</div>
-                        <p>暂无相关内容</p>
-                    </div>
-                `;
+                    html += `
+                        <div class="card" data-type="${card.type}">
+                            <div class="card-header">
+                                <div class="card-icon ${card.type}">${card.icon}</div>
+                                <div class="card-title">${card.title}</div>
+                                <div class="card-time">${card.time}</div>
+                            </div>
+                            ${tagsHtml ? `<div class="card-tags">${tagsHtml}</div>` : ''}
+                            <div class="items-list">${itemsHtml}</div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
             }
+        });
 
-            container.innerHTML = html;
+        if (!hasContent) {
+            html = `<div class="empty-state">
+                <div class="empty-state-icon">📭</div>
+                <p>暂无相关内容</p>
+            </div>`;
         }
 
-        // 筛选按钮事件
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.dataset.filter;
-                renderContent();
-            });
-        });
+        container.innerHTML = html;
+    }
 
-        // 搜索框事件
-        document.getElementById('searchInput').addEventListener('input', function() {
-            searchTerm = this.value;
+    function toggleItem(headerEl, key) {
+        const body = headerEl.nextElementSibling;
+        const isOpen = openItems.has(key);
+
+        if (isOpen) {
+            openItems.delete(key);
+            headerEl.classList.remove('active');
+            body.classList.remove('open');
+        } else {
+            openItems.add(key);
+            headerEl.classList.add('active');
+            body.classList.add('open');
+        }
+    }
+
+    // 筛选按钮
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.dataset.filter;
             renderContent();
         });
+    });
 
-        // 初始渲染
+    // 搜索
+    document.getElementById('searchInput').addEventListener('input', function() {
+        searchTerm = this.value;
         renderContent();
+    });
+
+    renderContent();
     </script>
 </body>
 </html>
+<!-- deployed: 20260326090000 -->
