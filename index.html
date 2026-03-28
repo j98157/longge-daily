@@ -336,13 +336,12 @@
 <body>
     <div class="header">
         <h1>📊 龙哥信息日报</h1>
-        <p>城市更新 · 马拉松赛事 · 行政工作 · 党建学习</p>
+        <p>城市更新 · 行政工作 · 党建学习</p>
     </div>
     
     <div class="filters">
         <button class="filter-btn active" data-filter="all">全部</button>
         <button class="filter-btn" data-filter="city">城市更新</button>
-        <button class="filter-btn" data-filter="marathon">马拉松</button>
         <button class="filter-btn" data-filter="admin">行政工作</button>
         <button class="filter-btn" data-filter="party">党建学习</button>
         <input type="text" class="search-box" placeholder="搜索关键词..." id="searchInput">
@@ -434,6 +433,8 @@
                         }
                     ]
                 },
+                {
+                    type: 'admin',
                     icon: '📋',
                     title: '行政工作日报',
                     time: '08:00',
@@ -714,86 +715,6 @@
                                     <li><strong>利用检索</strong>：建立全文检索系统，档案调阅效率提升80%以上</li>
                                 </ul>
                                 <div class="highlight">📌 合规提示：档案管理须符合《档案法》《企业档案工作规范》要求，定期开展合规自查</div>`
-                        }
-                    ]
-                },
-                {
-                    type: 'marathon',
-                    icon: '🏃',
-                    title: '全国马拉松赛事日报',
-                    time: '08:00',
-                    tags: ['重要'],
-                    items: [
-                        {
-                            label: '【重要】2026北京马拉松 — 报名截止3月30日，仅剩3天！',
-                            badge: { text: '紧急', cls: 'badge-hot' },
-                            detail: `<p><strong>⚠️ 距截止仅剩3天！请尽快报名！</strong></p>
-                                <ul>
-                                    <li>比赛日期：2026年10月19日（周日）</li>
-                                    <li>报名截止：<strong>2026年3月30日</strong></li>
-                                    <li>限额：30,000人（抽签制）</li>
-                                    <li>报名费：全程290元，半程190元</li>
-                                    <li>赛道：天安门广场出发，途经长安街、颐和园</li>
-                                </ul>
-                                <div class="highlight">🔗 立即前往北京马拉松官网报名：www.beijing-marathon.com</div>`,
-                            url: 'https://www.beijing-marathon.com'
-                        },
-                        {
-                            label: '无锡马拉松 — 报名中，4月10日截止，中国田协金牌赛事',
-                            badge: { text: '报名中', cls: 'badge-new' },
-                            detail: `<ul>
-                                <li>比赛日期：2026年4月26日</li>
-                                <li>报名截止：<strong>2026年4月10日</strong></li>
-                                <li>赛事等级：中国田协金牌赛事</li>
-                                <li>特色：成绩导向，精英选手优先保障，赛道平坦适合PB</li>
-                                <li>赛道：无锡太湖国际博览中心出发，环太湖风光带</li>
-                            </ul>`
-                        },
-                        {
-                            label: '广州马拉松 — 报名开启中，12月6日开赛',
-                            badge: { text: '报名中', cls: 'badge-new' },
-                            detail: `<ul>
-                                <li>比赛日期：2026年12月6日</li>
-                                <li>报名方式：抽签制</li>
-                                <li>限额：30,000人</li>
-                                <li>赛道：广州塔出发，途经珠江新城、海心沙岛</li>
-                                <li>赛事等级：中国田协金牌赛事</li>
-                            </ul>`,
-                            url: 'https://www.gzmarathon.com'
-                        },
-                        {
-                            label: '武汉马拉松 — 2026赛事等级调整，从A类降至C类',
-                            badge: { text: '注意', cls: 'badge-key' },
-                            detail: `<p>据悦跑圈等平台消息，2026武汉马拉松赛事等级疑似从世界田联A类降至C类，引发跑者关注。</p>
-                                <ul>
-                                    <li>同期降级还有吉林市马拉松（2025年才升为金标）</li>
-                                    <li>降级原因：部分赛事金标认证进入定期复审周期</li>
-                                    <li>赛事规模和赛道不受影响，仍是国内重点赛事</li>
-                                    <li>建议关注官方公告确认最新赛事信息</li>
-                                </ul>
-                                <div class="highlight">💡 提醒：以成绩申请国际马拉松赛事（波士顿马拉松等）须确认资格赛事级别</div>`,
-                            url: 'https://www.zhihu.com/question/2017564614540428466'
-                        },
-                        {
-                            label: '上海马拉松 — 预计4月1日开启报名，世界田联金标赛事',
-                            badge: { text: '即将', cls: 'badge-key' },
-                            detail: `<ul>
-                                <li>比赛日期：预计2026年11月</li>
-                                <li>报名开启：<strong>预计4月1日</strong>（距今约5天）</li>
-                                <li>赛事等级：世界田联金标赛事</li>
-                                <li>建议提前关注官方公众号"上海马拉松"抢先报名</li>
-                                <li>历年竞争激烈，报名开放后建议第一时间提交</li>
-                            </ul>`
-                        },
-                        {
-                            label: '深圳马拉松 — 预计4月中旬开启报名，赛道沿深圳湾',
-                            badge: { text: '即将', cls: 'badge-key' },
-                            detail: `<ul>
-                                <li>比赛日期：预计2026年12月</li>
-                                <li>报名开启：预计4月中旬</li>
-                                <li>赛道：深圳湾公园沿线，滨海风景优美</li>
-                                <li>大湾区三大马拉松（广深珠）可连报，性价比高</li>
-                            </ul>`
                         }
                     ]
                 },
@@ -1103,68 +1024,6 @@
                     ]
                 },
                 {
-                    type: 'marathon',
-                    icon: '🏃',
-                    title: '全国马拉松赛事日报',
-                    time: '09:00',
-                    tags: ['重要'],
-                    items: [
-                        {
-                            label: '【重要】2026北京马拉松 — 报名截止3月30日',
-                            badge: { text: '紧急', cls: 'badge-hot' },
-                            detail: `<p><strong>⚠️ 距截止仅剩5天！</strong></p>
-                                <ul>
-                                    <li>比赛日期：2026年10月19日（周日）</li>
-                                    <li>报名截止：<strong>2026年3月30日</strong></li>
-                                    <li>限额：30,000人（抽签制）</li>
-                                    <li>报名费：全程290元，半程190元</li>
-                                    <li>赛道：天安门广场出发，途经长安街、颐和园</li>
-                                </ul>`,
-                            url: 'https://www.beijing-marathon.com'
-                        },
-                        {
-                            label: '广州马拉松 — 报名已开启，限额30000人',
-                            badge: { text: '报名中', cls: 'badge-new' },
-                            detail: `<ul>
-                                <li>比赛日期：2026年12月6日</li>
-                                <li>报名方式：抽签制，需在截止前完成报名</li>
-                                <li>限额：30,000人</li>
-                                <li>赛道：广州塔出发，途经珠江新城、海心沙</li>
-                            </ul>`,
-                            url: 'https://www.gzmarathon.com'
-                        },
-                        {
-                            label: '无锡马拉松 — 报名中，4月10日截止，精英赛事',
-                            badge: { text: '报名中', cls: 'badge-new' },
-                            detail: `<ul>
-                                <li>比赛日期：2026年4月26日</li>
-                                <li>报名截止：2026年4月10日</li>
-                                <li>赛事等级：中国田协金牌赛事</li>
-                                <li>特色：以成绩为导向，精英选手优先保障</li>
-                            </ul>`
-                        },
-                        {
-                            label: '上海马拉松 — 预计4月1日开启报名（金标赛事）',
-                            badge: { text: '即将', cls: 'badge-key' },
-                            detail: `<ul>
-                                <li>比赛日期：预计2026年11月</li>
-                                <li>报名开启：预计4月1日</li>
-                                <li>赛事等级：世界田联金标赛事</li>
-                                <li>建议提前关注官方公众号"上海马拉松"</li>
-                            </ul>`
-                        },
-                        {
-                            label: '深圳马拉松 — 预计4月中旬开启报名',
-                            badge: { text: '即将', cls: 'badge-key' },
-                            detail: `<ul>
-                                <li>比赛日期：预计2026年12月</li>
-                                <li>报名开启：预计4月中旬</li>
-                                <li>赛道：深圳湾公园沿线，滨海风景优美</li>
-                            </ul>`
-                        }
-                    ]
-                },
-                {
                     type: 'admin',
                     icon: '📋',
                     title: '行政工作日报',
@@ -1422,4 +1281,4 @@
     </script>
 </body>
 </html>
-<!-- deployed: 20260328092000 -->
+<!-- deployed: 20260328143700 -->
